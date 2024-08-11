@@ -1,0 +1,43 @@
+/* Contenedor principal del contacto */
+.contact-card {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imagen del contacto */
+.contact-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Detalles del contacto */
+.contact-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.contact-info {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info i {
+    margin-right: 8px;
+}
