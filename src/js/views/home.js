@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -7,8 +8,7 @@ export const Home = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        // Reemplaza "michell" con el nombre de agenda válido
-        fetch('https://playground.4geeks.com/contact/agendas/michell/contacts')
+        fetch('https://playground.4geeks.com/contact/agendas/BeatrizHerranz/contacts')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -16,12 +16,14 @@ export const Home = () => {
                 return response.json();
             })
             .then(data => {
-                console.log('Data fetched:', data); // Añadido para diagnóstico
-                setContacts(data);
+                console.log('Data fetched:', data); 
+                setContacts(data.contacts);
                 setLoading(false);
+                console.log(data)
+
             })
             .catch(error => {
-                console.error('Fetch error:', error); // Añadido para diagnóstico
+                console.error('Fetch error:', error); 
                 setError(error.message);
                 setLoading(false);
             });
@@ -32,23 +34,29 @@ export const Home = () => {
 
     return (
         <div className="container">
-            <div className="row">
+            <div className="row justify-content-center">
                 {contacts.length > 0 ? (
                     contacts.map(contact => (
-                        <div key={contact.id} className="col-md-4 mb-4">
+                        <div key={contact.id} className="col-md-8 mb-4">
                             <div className="card">
-                                <img className="card-img-top" src={contact.image || "https://placehold.co/400"} alt={contact.name} />
-                                <div className="card-body">
-                                    <h5 className="card-title">{contact.name}</h5>
-                                    <p className="card-text">
-                                        <i className="fa-solid fa-location-dot"></i> {contact.address}
-                                    </p>
-                                    <p className="card-text">
-                                        <i className="fa-solid fa-phone"></i> {contact.phone}
-                                    </p>
-                                    <p className="card-text">
-                                        <i className="fa-regular fa-envelope"></i> {contact.email}
-                                    </p>
+                                <div className="row no-gutters">
+                                    <div className="col-md-4">
+                                        <img className="card-img" src={contact.image || "https://placehold.co/400"} alt={contact.name} />
+                                    </div>
+                                    <div className="col-md-8">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{contact.name}</h5>
+                                            <p className="card-text">
+                                                <i className="fa-solid fa-location-dot"></i> {contact.address}
+                                            </p>
+                                            <p className="card-text">
+                                                <i className="fa-solid fa-phone"></i> {contact.phone}
+                                            </p>
+                                            <p className="card-text">
+                                                <i className="fa-regular fa-envelope"></i> {contact.email}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
